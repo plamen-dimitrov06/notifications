@@ -1,2 +1,2 @@
-# notificaitons
+# Notifications System
 SumUp coding assignment.
