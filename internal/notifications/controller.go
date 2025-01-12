@@ -1,0 +1,1 @@
+/* http actions for accepting messages */
