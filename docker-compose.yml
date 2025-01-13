@@ -9,6 +9,8 @@ services:
       - 8025:8025
     networks:
       - comms
+    depends_on:
+      - backend
 
 networks:
   comms:
