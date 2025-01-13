@@ -1,6 +1,8 @@
 services:
   backend:
     build: build
+    ports:
+      -8080:8080
     networks:
       - comms
   mail:
