@@ -1,8 +1,10 @@
 services:
   backend:
-    build: build
+    build:
+      context: ./
+      dockerfile: build/Dockerfile
     ports:
-      -8080:8080
+      - 8080:8080
     networks:
       - comms
   mail:
