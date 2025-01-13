@@ -1,0 +1,14 @@
+services:
+  backend:
+    build: build
+    networks:
+      - comms
+  mail:
+    image: mailhog/mailhog
+    ports:
+      - 8025:8025
+    networks:
+      - comms
+
+networks:
+  comms:
