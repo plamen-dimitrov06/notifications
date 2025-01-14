@@ -29,6 +29,7 @@ func (t EmailTransport) Send(m Message) {
 	if err != nil {
 		log.Fatal(err)
 	}
+	// TODO : missing subject, add it
 	_, err = fmt.Fprintf(wc, m.Content)
 	if err != nil {
 		log.Fatal(err)

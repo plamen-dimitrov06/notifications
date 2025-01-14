@@ -28,6 +28,7 @@ func EmailHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// TODO: move to factory function
 	transport := EmailTransport{}
 	transport.Send(message)
 }
