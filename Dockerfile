@@ -5,7 +5,3 @@ FROM golang
 WORKDIR /usr/src/notifications
 
 COPY . .
-
-RUN go run cmd/notifications/*.go
-
-EXPOSE 8080

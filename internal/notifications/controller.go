@@ -3,7 +3,6 @@ package notifications
 import (
 	"net/http"
 	"encoding/json"
-	"github.com/plamen-dimitrov06/notifications/internal/transport"
 )
 
 func SlackHandler(w http.ResponseWriter, r *http.Request) {
@@ -29,6 +28,6 @@ func EmailHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	transport := transport.EmailTransport{}
+	transport := EmailTransport{}
 	transport.Send(message)
 }

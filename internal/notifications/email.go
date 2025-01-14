@@ -1,4 +1,4 @@
-package transport
+package notifications
 
 import (
 	"fmt"
@@ -9,9 +9,9 @@ import (
 type EmailTransport struct {
 }
 
-func (t EmailTransport) Send(m notifications.Message) {
+func (t EmailTransport) Send(m Message) {
 	// Connect to the remote SMTP server.
-	c, err := smtp.Dial("0.0.0.0:1025")
+	c, err := smtp.Dial("mail:1025")
 	if err != nil {
 		log.Fatal(err)
 	}
