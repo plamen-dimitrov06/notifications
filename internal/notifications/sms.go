@@ -12,7 +12,7 @@ type SMSTransport struct {
 }
 
 func (t SMSTransport) Send(m Message) {
-	client, err := infobip.NewClient("4e1946.api.infobip.com", "3e8d5ed580b5664cf611e885a83283e2-8c6a15f2-d16d-4370-a721-58eaf7027fd8")
+	client, err := infobip.NewClient("<infobip URL>", "<API key>")
 	if err != nil {
 		fmt.Printf("%s\n", err)
 		return
