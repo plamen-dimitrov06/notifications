@@ -3,6 +3,7 @@ package notifications
 import (
 	"context"
 	"fmt"
+	"os"
 
 	"github.com/infobip-community/infobip-api-go-sdk/v3/pkg/infobip"
 	"github.com/infobip-community/infobip-api-go-sdk/v3/pkg/infobip/models"
@@ -12,7 +13,7 @@ type SMSTransport struct {
 }
 
 func (t SMSTransport) Send(m Message) {
-	client, err := infobip.NewClient("<infobip URL>", "<API key>")
+	client, err := infobip.NewClient(os.Getenv("INFOBIP_URL"), os.Getenv("INFOBIP_API_TOKEN"))
 	if err != nil {
 		fmt.Printf("%s\n", err)
 		return
