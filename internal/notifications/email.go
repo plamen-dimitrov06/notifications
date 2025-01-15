@@ -10,7 +10,6 @@ type EmailTransport struct {
 }
 
 func (t EmailTransport) Send(m Message) {
-	// Connect to the remote SMTP server.
 	c, err := smtp.Dial("mail:1025")
 	if err != nil {
 		log.Fatal(err)
@@ -45,3 +44,5 @@ func (t EmailTransport) Send(m Message) {
 		log.Fatal(err)
 	}
 }
+
+func NewEmailTransport() EmailTransport { return EmailTransport{} }

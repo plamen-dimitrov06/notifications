@@ -36,3 +36,5 @@ func (t SMSTransport) Send(m Message) {
 		return
 	}
 }
+
+func NewSMSTransport() SMSTransport { return SMSTransport{} }

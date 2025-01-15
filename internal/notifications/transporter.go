@@ -1,4 +1,4 @@
-package transport
+package notifications
 
 type Transporter interface {
 	Send(message Message)
