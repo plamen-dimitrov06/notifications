@@ -12,8 +12,8 @@ func SlackHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	transport := SlackTransport{}
-	transport.Send(message)
+	handler := NewSlackHandler()
+	handler.Notify(message)
 }
 
 func SMSHandler(w http.ResponseWriter, r *http.Request) {
@@ -23,8 +23,8 @@ func SMSHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	transport := SMSTransport{}
-	transport.Send(message)
+	handler := NewSMSHandler()
+	handler.Notify(message)
 }
 
 func EmailHandler(w http.ResponseWriter, r *http.Request) {
@@ -34,7 +34,6 @@ func EmailHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// TODO: move to factory function
-	transport := EmailTransport{}
-	transport.Send(message)
+	handler := NewEmailHandler()
+	handler.Notify(message)
 }

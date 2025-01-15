@@ -5,11 +5,12 @@ type NotificationHandler struct {
 }
 
 func (h NotificationHandler) Notify(m Message) {
-	err := h.Transport.Send(m)
-	// if the message was not sent, try again
-	if err != nil {
-		h.Notify(m)
-	}
+	h.Transport.Send(m)
+	// err := h.Transport.Send(m)
+	// // if the message was not sent, try again
+	// if err != nil {
+	// 	h.Notify(m)
+	// }
 }
 
 func NewEmailHandler() NotificationHandler {
