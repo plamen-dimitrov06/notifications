@@ -3,13 +3,14 @@ package notifications
 import (
 	"fmt"
 	"time"
+	"notifications/internal/transport"
 )
 
 type NotificationHandler struct {
-	Transport Transporter
+	Transport transport.Transporter
 }
 
-func (h NotificationHandler) Notify(m Message) {
+func (h NotificationHandler) Notify(m transport.Message) {
 	isSuccessful := h.Transport.Send(m)
 	// if the message was not sent, try again in 3 seconds
 	if isSuccessful != true {
@@ -20,16 +21,16 @@ func (h NotificationHandler) Notify(m Message) {
 }
 
 func NewEmailHandler() NotificationHandler {
-	transport := NewEmailTransport()
+	transport := transport.NewEmailTransport()
 	return NotificationHandler{Transport: transport}
 }
 
 func NewSlackHandler() NotificationHandler {
-	transport := NewSlackTransport()
+	transport := transport.NewSlackTransport()
 	return NotificationHandler{Transport: transport}
 }
 
 func NewSMSHandler() NotificationHandler {
-	transport := NewSMSTransport()
+	transport := transport.NewSMSTransport()
 	return NotificationHandler{Transport: transport}
 }

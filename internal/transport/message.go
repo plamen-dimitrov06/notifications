@@ -1,4 +1,4 @@
-package notifications
+package transport
 
 type Message struct {
 	Recipient	string `json:"recipient"`
