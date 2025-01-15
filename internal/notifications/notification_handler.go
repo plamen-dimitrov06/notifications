@@ -11,10 +11,10 @@ type NotificationHandler struct {
 
 func (h NotificationHandler) Notify(m Message) {
 	isSuccessful := h.Transport.Send(m)
-	// if the message was not sent, try again in 5 seconds
+	// if the message was not sent, try again in 3 seconds
 	if isSuccessful != true {
 		fmt.Printf("Unable to send message, retrying again.\n")
-		time.Sleep(5 * time.Second)
+		time.Sleep(3 * time.Second)
 		h.Notify(m)
 	}
 }

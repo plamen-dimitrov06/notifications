@@ -11,4 +11,3 @@ SumUp coding assignment.
 
 ## TODO
 * Write the exaplanation doc
-* Make sure the code gurantees "at least once" SLA
