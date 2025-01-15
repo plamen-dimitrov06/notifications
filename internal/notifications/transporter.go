@@ -1,5 +1,5 @@
 package notifications
 
 type Transporter interface {
-	Send(message Message)
+	Send(message Message) bool
 }

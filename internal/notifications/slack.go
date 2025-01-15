@@ -10,7 +10,7 @@ import (
 type SlackTransport struct {
 }
 
-func (t SlackTransport) Send(m Message) {
+func (t SlackTransport) Send(m Message) bool {
 	api := slack.New(os.Getenv("SLACK_API_TOKEN"))
 
 	channelID, timestamp, err := api.PostMessage(
@@ -20,9 +20,10 @@ func (t SlackTransport) Send(m Message) {
 	)
 	if err != nil {
 		fmt.Printf("%s\n", err)
-		return
+		return false
 	}
 	fmt.Printf("Message successfully sent to channel %s at %s", channelID, timestamp)
+	return true
 }
 
 func NewSlackTransport() SlackTransport { return SlackTransport{} }

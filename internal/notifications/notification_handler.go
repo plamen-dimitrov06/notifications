@@ -1,16 +1,22 @@
 package notifications
 
+import (
+	"fmt"
+	"time"
+)
+
 type NotificationHandler struct {
 	Transport Transporter
 }
 
 func (h NotificationHandler) Notify(m Message) {
-	h.Transport.Send(m)
-	// err := h.Transport.Send(m)
-	// // if the message was not sent, try again
-	// if err != nil {
-	// 	h.Notify(m)
-	// }
+	isSuccessful := h.Transport.Send(m)
+	// if the message was not sent, try again in 5 seconds
+	if isSuccessful != true {
+		fmt.Printf("Unable to send message, retrying again.\n")
+		time.Sleep(5 * time.Second)
+		h.Notify(m)
+	}
 }
 
 func NewEmailHandler() NotificationHandler {

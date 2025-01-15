@@ -12,11 +12,11 @@ import (
 type SMSTransport struct {
 }
 
-func (t SMSTransport) Send(m Message) {
+func (t SMSTransport) Send(m Message) bool {
 	client, err := infobip.NewClient(os.Getenv("INFOBIP_URL"), os.Getenv("INFOBIP_API_TOKEN"))
 	if err != nil {
 		fmt.Printf("%s\n", err)
-		return
+		return false
 	}
 	sms := models.SMSMsg{
 		Destinations: []models.SMSDestination{
@@ -33,8 +33,9 @@ func (t SMSTransport) Send(m Message) {
 	fmt.Printf("Response : %s \r\n Response details : %s \r\n", resp, respDetails)
 	if err != nil {
 		fmt.Printf("%s\n", err)
-		return
+		return false
 	}
+	return true
 }
 
 func NewSMSTransport() SMSTransport { return SMSTransport{} }
