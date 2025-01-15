@@ -25,13 +25,12 @@ func (t EmailTransport) Send(m Message) bool {
 		return false
 	}
 
-	// Send the email body.
 	wc, err := c.Data()
 	if err != nil {
 		fmt.Printf("%s\n", err)
 		return false
 	}
-	// TODO : missing subject, add it
+
 	_, err = fmt.Fprintf(wc, m.Content)
 	if err != nil {
 		fmt.Printf("%s\n", err)
