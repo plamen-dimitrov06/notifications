@@ -5,3 +5,5 @@ FROM golang
 WORKDIR /usr/src/notifications
 
 COPY . .
+
+RUN go mod download
